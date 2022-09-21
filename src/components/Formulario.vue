@@ -128,6 +128,29 @@
                             <small class="text-muted">Formato: 0000 0000 0000 0000</small>
                         </div>
                     </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Placa Veículo:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-model="form.placaVeiculo" v-maska="'AAA-####'">
+                            <small class="text-muted">Formato: AAA-0000</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Placa Veículo Mercosul:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-model="form.placaVeiculoMercosul" v-maska="'AAA#A##'">
+                            <small class="text-muted">Formato: AAA0A00</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">RG:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-model="form.rg" v-maska="'#*-X'">
+                            <small class="text-muted">Formato: Sem padrão</small>
+                        </div>
+                    </div>
+
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Data:</label>
                         <div class="col">
@@ -245,6 +268,15 @@
                 <div class="mb-3 row">
                     <span>Cartão de Crédito: {{form.cartaoDeCredito}}</span>
                 </div>
+                <div class="mb-3 row">
+                    <span>PlacaVeiculo: {{form.placaVeiculo}}</span>
+                </div>
+                <div class="mb-3 row">
+                    <span>placaVeiculoMercosul: {{form.placaVeiculoMercosul}}</span>
+                </div>
+                <div class="mb-3 row">
+                    <span>rg: {{form.rg}}</span>
+                </div>
 
                 <div class="mb-3 row">
                     <span>Data:</span>
@@ -295,7 +327,10 @@ export default {
             cep: '',
             cpf: '',
             cnpj: '',
-            cartaoDeCredito: ''
+            cartaoDeCredito: '',
+            placaVeiculo: '',
+            placaVeiculoMercosul: '',
+            rg: ''
         }
     })
 }
