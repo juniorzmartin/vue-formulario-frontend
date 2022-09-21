@@ -8,7 +8,7 @@
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Nome:</label>
                         <div class="col">
-                            <input type="text" class="form-control" v-model.lazy.number="form.nome">
+                            <input type="text" class="form-control" v-model.lazy="form.nome">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -26,7 +26,7 @@
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Idade:</label>
                         <div class="col">
-                            <input type="number" class="form-control" v-model="form.idade">
+                            <input type="number" class="form-control" v-model.number="form.idade">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -51,7 +51,14 @@
                         <label class="col-3 col-form-label">Licença:</label>
                         <div class="col">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox">
+                                <input 
+                                    class="form-check-input" 
+                                    type="checkbox" 
+                                    v-model="form.licenca"
+                                    true-value="SIM"
+                                    false-value="NÃO"
+                                    
+                                >
                                 <label class="form-check-label">Li e aceito os termos</label>
                             </div>
                         </div>
@@ -61,25 +68,25 @@
                         <label class="col-3 col-form-label">Interesses:</label>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" value="JavaScript" v-model="form.interesses">
                                 <label class="form-check-label">
-                                    JavaScriot
+                                    JavaScript
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" value="VueJS" v-model="form.interesses">
                                 <label class="form-check-label">
                                     VueJS
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" value="Angular" v-model="form.interesses">
                                 <label class="form-check-label">
                                     Angular
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" value="NodeJS" v-model="form.interesses">
                                 <label class="form-check-label">
                                     NodeJS
                                 </label>
@@ -90,7 +97,7 @@
                         <label class="col-3 col-form-label">Telefone:</label>
                         <div class="col">
                             <input type="tel" class="form-control" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}">
-                            <small class="text-muted">Formato: 11 97777-5555</small>
+                            <small class="text-muted">Formato: 11 93333-1111</small>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -185,10 +192,15 @@
                     <spam>Gênero:</spam>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Licença:</spam>
+                    <spam>Licença: {{form.licenca}}</spam>
                 </div>
                 <div class="mb-3 row">
                     <spam>Interesses:</spam>
+                    <ul>
+                        <li v-for="(interesse, index) in form.interesses" :key="index">
+                            {{interesse}}
+                        </li>
+                    </ul>
                 </div>
                 <div class="mb-3 row">
                     <spam>Telefone:</spam>
@@ -235,7 +247,9 @@ export default {
             nome: '',
             email: '',
             senha: '',
-            idade:''
+            idade:'',
+            licenca: "SIM",
+            interesses: []
         }
     })
 }
