@@ -283,6 +283,19 @@
                 </div>
                 <div class="mb-3 row">
                     <span>Data/hora local: {{form.dataHoraLocal}}</span>
+                    <ul>
+                        <li>
+                            {{$moment(form.dataHoraLocal).format('dddd')}}
+                            {{$moment(form.dataHoraLocal).add(10, 'days').format('LL')}}
+                            {{$moment(form.dataHoraLocal).add(10, 'months').format('LL')}}
+                            {{$moment(form.dataHoraLocal).add(1, 'years').format('LL')}}
+                            {{$moment(form.dataHoraLocal).subtract(1, 'years').format('LL')}}
+                            {{$moment(form.dataHoraLocal).subtract(10, 'months').format('LL')}}
+                            {{$moment(form.dataHoraLocal).subtract(10, 'days').format('LL')}}
+                            {{$moment(form.dataHoraLocal).format('LLLL')}}
+                            {{$moment(form.dataHoraLocal).add(2,'days').format('LLLL')}}
+                        </li>
+                    </ul>
                 </div>
                 <div class="mb-3 row">
                     <span>Mês: {{form.mes}}</span>

@@ -8,4 +8,6 @@ import moment from 'moment'
 const app = createApp(App)
 app.use(Maska) //feita para vue: plugin
 app.config.globalProperties.$moment = moment //propriedade global: não é especifica para o vue
+app.config.globalProperties.$moment.locale('pt-br')
+
 app.mount('#app')
