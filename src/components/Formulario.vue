@@ -224,6 +224,13 @@
                         </div>
                     </div>
 
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Avaliação:</label>
+                        <div class="col">
+                            <input-estrelas></input-estrelas>
+                        </div>
+                    </div>
+
                     <hr>
                     <div class="mb-3 row">
                         <div class="col d-flex justify-content-between">
@@ -358,7 +365,11 @@
 </template>
 
 <script>
+import InputEstrelas from '@/components/InputEstrelas.vue'
 export default {
+    components: {
+        InputEstrelas
+    },
     name: 'Formulario',
     data: () => ({
         cursos: [
