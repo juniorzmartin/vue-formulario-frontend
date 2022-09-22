@@ -1,8 +1,6 @@
 <template>
     <div>
-        <i v-for="estrela in estrelas" :class="estrela.estilo" :key="estrela.id"></i>
-        {{estrelas}}
-        <i class="bi bi-star-fill"></i>
+        <i v-for="estrela in estrelas" :class="estrela.estilo" :key="estrela.id" @click="marcarAvaliacao(estrela.id)"></i>
     </div>
 </template>
 
@@ -16,7 +14,8 @@ export default {
         }
     },
     data: () => ({
-        estrelas: []
+        estrelas: [],
+        avaliacao: 0
     }),
         created() {
         this.iniciarEstrelas()
@@ -26,6 +25,17 @@ export default {
             for(let i = 0; i < this.numeroEstrelas; i++){
                 this.estrelas[i] = {id: i, estilo:'bi bi-star estrela'}
             }
+        },
+        marcarAvaliacao(e){
+            this.iniciarEstrelas()
+            this.avaliacao = e + 1
+            for(let i = 0; i < this.avaliacao; i++){
+                this.estrelas[i].estilo = 'bi bi-star-fill estrela preenchida'
+            }
+            
+            // enviar evento para o componente pai
+
+            this.$emit('avaliar', this.avaliacao)
         }
     }
 }
@@ -37,6 +47,8 @@ export default {
     color:#999;
     margin-left: 2px;
     margin-right: 1px;
-
+}
+.preenchida {
+    color: #fc0;
 }
 </style>

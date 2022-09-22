@@ -5,7 +5,7 @@
                 <span class="fs-4">ENTRADA DE DADOS</span>
                 <hr>
                <!-- <form @submit.prevent="enviar($event)"> -->
-                <form @reset.prevent="resetar()">
+                <div @reset.prevent="resetar()">
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Nome:</label>
                         <div class="col">
@@ -223,14 +223,12 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Avaliação:</label>
                         <div class="col">
-                            <input-estrelas :numero-estrelas="2"></input-estrelas>
+                            <input-estrelas :numero-estrelas="5" @avaliar="form.avaliacao = $event"></input-estrelas>
                         </div>
                     </div>
-
                     <hr>
                     <div class="mb-3 row">
                         <div class="col d-flex justify-content-between">
@@ -240,8 +238,8 @@
                             <button class="btn btn-success" type="submit">Enviar (submit)</button>
                         </div>                        
                     </div>
-                   
-                </form>
+                </div>
+                <!-- </form> -->
             </div>
 
             
@@ -357,6 +355,9 @@
                 <div class="mb-3 row">
                     <span>Curso: {{form.curso}}</span>
                 </div>
+                <div class="mb-3 row">
+                    <span>Avaliação: {{form.avaliacao}}</span>
+                </div>
             </div>
         </div>
 
@@ -404,7 +405,8 @@ export default {
             escondido: 'Este input está escondido',
             arquivos: {},
             descricao: '',
-            curso: ''
+            curso: '',
+            avaliacao: 0
         }
     }),
     methods: {
