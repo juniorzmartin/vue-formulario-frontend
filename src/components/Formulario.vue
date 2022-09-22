@@ -205,6 +205,24 @@
                             <input type="file" class="form-control" multiple @change="selecionarArquivos($event)">
                         </div>
                     </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Descrição:</label>
+                        <div class="col">
+                            <textarea class="form-control" rows="3" v-model="form.descricao"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Cursos:</label>
+                        <div class="col">
+                            <select class="form-select" v-model="form.curso" >
+                                <option value="" disabled>Selecione uma opção</option>
+                                <option v-for="curso in cursos" :key="curso.id" :value="curso.id">{{curso.id}} - {{curso.curso}}</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <hr>
                     <div class="mb-3 row">
                         <div class="col d-flex justify-content-between">
@@ -321,6 +339,15 @@
                         <li v-for="(arquivo, index) in form.arquivos" :key="index"> {{arquivo.name}}</li>
                     </ul>
                 </div>  
+
+                <div class="mb-3 row">
+                    <span>Descrição:</span>
+                    <!-- <pre>{{form.descricao}}</pre> -->
+                    <div style="white-space: pre">{{form.descricao}}</div>
+                </div>
+                <div class="mb-3 row">
+                    <span>Curso: {{form.curso}}</span>
+                </div>
             </div>
         </div>
 
@@ -332,6 +359,12 @@
 export default {
     name: 'Formulario',
     data: () => ({
+        cursos: [
+            {id:1, curso: 'Banco de Dados Relacionais'},
+            {id:2, curso: 'Desenvolvimento Web Avançado com Vue'},
+            {id:3, curso: 'Desenvolvimento Web Avançado com Laravel'},
+            {id:4, curso: 'Curso Completo do desenvolvedor NodeJS e MongoDB'}
+        ],
         form: {
             nome: '',
             email: '',
@@ -355,7 +388,9 @@ export default {
             cor: '#6c757d',
             alcance: 5,
             escondido: 'Este input está escondido',
-            arquivos: {}
+            arquivos: {},
+            descricao: '',
+            curso: ''
         }
     }),
     methods: {
