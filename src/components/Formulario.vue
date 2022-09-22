@@ -227,7 +227,7 @@
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Avaliação:</label>
                         <div class="col">
-                            <input-estrelas></input-estrelas>
+                            <input-estrelas :numero-estrelas="2"></input-estrelas>
                         </div>
                     </div>
 
