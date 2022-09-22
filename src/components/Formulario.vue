@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-6 bg-light">
+            <div class="col-6 bg-light" >
                 <span class="fs-4">ENTRADA DE DADOS</span>
                 <hr>
                 <form>
@@ -184,19 +184,19 @@
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Cor:</label>
                         <div class="col">
-                            <input type="color" class="form-color">
+                            <input type="color" class="form-color" v-model="form.cor">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Valor limite:</label>
                         <div class="col">
-                            <input type="range" class="form-range" min="0" max="100" step="1">
+                            <input type="range" class="form-range" min="0" max="100" step="1" v-model="form.alcance">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Escondido:</label>
                         <div class="col">
-                            <input type="hidden" class="form-control">
+                            <input type="hidden" class="form-control" v-model="form.escondido">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -218,7 +218,7 @@
             </div>
 
             
-            <div class="col-6 text-white bg-secondary">
+            <div class="col-6 text-white bg-secondary" :style="'background-color:'+form.cor+'!important'">
                 <span class="fs-4">ESTADO DO OBJETO</span>
                 <hr>
                 <div class="mb-5 row">
@@ -307,13 +307,13 @@
                     <span>Hora: {{form.hora}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Cor:</span>
+                    <span>Cor: {{form.cor}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Valor limite:</span>
+                    <span>Valor limite: {{form.alcance}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Escondido:</span>
+                    <span>Escondido: {{form.escondido}}</span>
                 </div>
                 <div class="mb-3 row">
                     <span>Upload:</span>
@@ -348,7 +348,10 @@ export default {
             dataHoraLocal: '',
             mes: '',
             semana: '',
-            hora: ''
+            hora: '',
+            cor: '',
+            alcance: 5,
+            escondido: 'Este input está escondido'
         }
     })
 }
